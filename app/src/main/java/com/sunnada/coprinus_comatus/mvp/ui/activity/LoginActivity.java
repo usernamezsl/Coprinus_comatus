@@ -1,6 +1,8 @@
 package com.sunnada.coprinus_comatus.mvp.ui.activity;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.widget.Toolbar;
@@ -11,7 +13,6 @@ import android.widget.EditText;
 
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.SPUtils;
-import com.blankj.utilcode.util.ToastUtils;
 import com.dyhdyh.widget.loading.dialog.LoadingDialog;
 import com.sunnada.coprinus_comatus.MainActivity;
 import com.sunnada.coprinus_comatus.R;
@@ -23,6 +24,9 @@ import com.sunnada.coprinus_comatus.di.module.LoginModule;
 import com.sunnada.coprinus_comatus.mvp.contract.LoginContract;
 import com.sunnada.coprinus_comatus.mvp.model.entity.User;
 import com.sunnada.coprinus_comatus.mvp.presenter.LoginPresenter;
+import com.zhihu.matisse.Matisse;
+import com.zhihu.matisse.MimeType;
+import com.zhihu.matisse.engine.impl.GlideEngine;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -106,7 +110,7 @@ public class LoginActivity extends ZSLActivity<LoginPresenter> implements LoginC
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.profile_image:
-                ToastUtils.showLong("设置头像");
+                selectImg();
                 break;
             case R.id.btn_login:
                 String username = mEdtUserName.getText().toString().trim();
@@ -120,6 +124,29 @@ public class LoginActivity extends ZSLActivity<LoginPresenter> implements LoginC
         }
     }
 
+    /**
+     * 选择图片
+     */
+    private void selectImg() {
+        Matisse.from(LoginActivity.this)
+                .choose(MimeType.allOf())
+                .countable(true)
+                .maxSelectable(9)
+//                        .addFilter(new GifSizeFilter(320, 320, 5 * Filter.K * Filter.K))
+//                        .gridExpectedSize(getResources().getDimensionPixelSize(R.dimen.grid_expected_size))
+                .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)
+                .thumbnailScale(0.85f)
+                .imageEngine(new GlideEngine());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == REQUEST_CODE_CHOOSE && resultCode == RESULT_OK) {
+//            mSelected = Matisse.obtainResult(data);
+//            Log.d("Matisse", "mSelected: " + mSelected);
+//        }
+    }
     /**
      * 设置用户信息
      */

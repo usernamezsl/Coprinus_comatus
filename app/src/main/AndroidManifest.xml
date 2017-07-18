@@ -3,6 +3,8 @@
           package="com.sunnada.coprinus_comatus">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
@@ -15,11 +17,6 @@
         <activity android:name=".MainActivity">
         </activity>
         <activity android:name=".mvp.ui.activity.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".mvp.ui.activity.ResgisterActivity">
         </activity>
@@ -34,6 +31,13 @@
         </meta-data>
 
         <activity android:name=".mvp.ui.activity.EquipmentActivity">
+        </activity>
+        <activity android:name=".mvp.ui.activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 
