@@ -46,21 +46,20 @@
             android:textSize="35px"/>
 
         <EditText
-            android:layout_gravity="center_vertical"
-            android:hint="请输入用户名"
             android:id="@+id/edt_user_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:hint="请输入用户名"/>
     </LinearLayout>
 
 
-
     <LinearLayout
-        android:layout_marginTop="20px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="120px"
         android:layout_marginRight="120px"
+        android:layout_marginTop="20px"
         android:orientation="horizontal">
 
         <TextView
@@ -72,11 +71,11 @@
             android:textSize="35px"/>
 
         <EditText
-            android:hint="请输入密码"
-            android:password="true"
             android:id="@+id/edt_password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:hint="请输入密码"
+            android:password="true"/>
     </LinearLayout>
 
 

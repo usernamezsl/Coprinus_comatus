@@ -99,7 +99,7 @@ public class SplashActivity extends ZSLActivity<SplashPresenter> implements Spla
 
             @Override
             public void onFinish() {
-                mBtnSpJump.setText("跳过(" + 0 + "s");
+                mBtnSpJump.setText("跳过(" + 0 + ")s");
                 launchActivity();//跳转主页
             }
         };

@@ -1,11 +1,9 @@
 package com.sunnada.coprinus_comatus.mvp.ui.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -19,6 +17,7 @@ import com.sunnada.coprinus_comatus.R;
 import com.sunnada.coprinus_comatus.base.AppComponent;
 import com.sunnada.coprinus_comatus.base.BaseApplication;
 import com.sunnada.coprinus_comatus.base.ZSLActivity;
+import com.sunnada.coprinus_comatus.base.ZSLApplication;
 import com.sunnada.coprinus_comatus.di.component.DaggerLoginComponent;
 import com.sunnada.coprinus_comatus.di.module.LoginModule;
 import com.sunnada.coprinus_comatus.mvp.contract.LoginContract;
@@ -179,18 +178,12 @@ public class LoginActivity extends ZSLActivity<LoginPresenter> implements LoginC
         }
     }
 
-    // 检测网络状态
-    public boolean isConnectingToInternet() {
-        ConnectivityManager connectivity = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connectivity != null) {
-            NetworkInfo[] info = connectivity.getAllNetworkInfo();
-            if (info != null)
-                for (int i = 0; i < info.length; i++)
-                    if (info[i].getState() == NetworkInfo.State.CONNECTED) {
-                        return true;
-                    }
-        }
-        return false;
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        ((ZSLApplication) BaseApplication.getInstance())
+                .getAppComponent()
+                .appManager()
+                .AppExit();
+        return super.onKeyDown(keyCode, event);
     }
-
 }
