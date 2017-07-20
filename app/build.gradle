@@ -61,4 +61,5 @@ dependencies {
     compile 'com.kyleduo.switchbutton:library:1.4.6'
     compile files('libs/org.apache.http.legacy.jar')
     compile 'com.zhihu.android:matisse:0.4.3'//知乎图片选择库
+    compile 'com.github.lygttpod:SuperTextView:2.0.5'//superTextView
 }
